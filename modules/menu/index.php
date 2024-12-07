@@ -7,7 +7,7 @@ if(isset($_POST['del'])){
 }
 ?>
 <div class="mt-4">
-    <a href="<?=ROOT;?>menu/form" class="btn btn-primary">Add Item</a>
+    <a href="<?=ROOT;?>menu/form" class="btn btn-primary">Add Items</a>
 </div>
 <form method="post">
     <table class="table table-stripted border" id="list">
