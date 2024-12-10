@@ -3,12 +3,21 @@ $data = DB('menu')->all();
 if(isset($_POST['del'])){
     $delid=implode(",",$_POST['del']);
     DB('menu')->delete($delid);
+    Session::set('gt',"Deleted Successfully!");
     redirect('menu');
+    exit;
 }
 ?>
 <div class="mt-4">
     <a href="<?=ROOT;?>menu/form" class="btn btn-primary">Add Items</a>
 </div>
+<?php if($msg=Session::get('gt')){
+    ?>
+    <div class="alert alert-success text-center h3"><?=$msg;?></div>
+    <?php
+    Session::delete('gt');
+}
+?>
 <form method="post">
     <table class="table table-stripted border" id="list">
         <thead class="table-dark">

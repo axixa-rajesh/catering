@@ -12,6 +12,7 @@ if (isset($_POST['item'])) {
     ];
 
     if ($obj->save($info,$uid)) {
+       Session::set('gt',"Data ". ($uid?"Updated":"Saved")." Successfully");
         redirect("menu");
     } else {
         echo "Something Went Worng!";
