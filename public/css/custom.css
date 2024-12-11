@@ -1,10 +1,30 @@
-   html,
-        body {
-            height: 100%;
-        }
+html,
+body {
+  height: 100%;
+}
 
-        .main {
-            height: 100%;
-            display: grid;
-            grid-template-rows: 50px 1fr 30px;
-        }
+.main {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 50px 1fr 30px;
+}
+.pagetitle {
+  padding: 5px;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: #336;
+  text-shadow: 2px 1px 3px #aa0;
+  border-bottom: 1px solid #ccf;
+  margin-bottom: 5px;
+}
+.pagetitle > span {
+  color: #aa0;
+}
+.cont{
+    width: 70%;
+    padding: 10px;
+    margin: 10px auto;
+    box-shadow: 1px 1px 5px #334;
+    border-radius: 7px;
+}

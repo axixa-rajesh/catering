@@ -4,7 +4,7 @@ Session::init();
 define('ROOT', 'http://localhost/batch7am/event/');
 require_once "helper/redirect.php";
 require_once "helper/DB.php";
-$module = "booking";
+$module = "users";
 $file = "index";
 $uid=null;
 $url = $_GET['url'] ?? null;

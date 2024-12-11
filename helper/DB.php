@@ -31,6 +31,13 @@ function DB($table,$pk='id'){
              $sql="select $cols from $this->table order by $order";
             return $this->query($sql)?->fetch_all(MYSQLI_ASSOC);
          }
+        public function custom($sql,$fetch=1)
+        {
+            if($fetch)
+               return $this->query($sql)?->fetch_all(MYSQLI_ASSOC);
+              return $this->query($sql)?->fetch_assoc();
+
+        }
         public function find($id,$cols = "*")
         {
             $sql = "select $cols from $this->table where $this->pk=$id";
