@@ -2,6 +2,8 @@
 require_once "helper/Session.php";
 Session::init();
 define('ROOT', 'http://localhost/batch7am/event/');
+define('BNO', 2);
+define('TIME', 60);
 require_once "helper/redirect.php";
 require_once "helper/DB.php";
 $module = "users";

@@ -27,7 +27,7 @@
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="<?=ROOT;?>menu/display">Menu</a>
+                                <a class="nav-link active" aria-current="page" href="<?= ROOT; ?>menu/display">Menu</a>
                             </li>
                             <?php if (Session::get('logindtl')) { ?>
                                 <li class="nav-item">
@@ -46,9 +46,18 @@
                                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?= ROOT; ?>users/logout">Logout</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        User
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="<?= ROOT; ?>users/form">Register</a></li>
+                                        <li><a class="dropdown-item" href="<?= ROOT; ?>users/changepwd">Change Password</a></li>
+                                        <li><a class="dropdown-item" href="<?= ROOT; ?>users/logout">Logout</a></li>
+                                        
+                                    </ul>
                                 </li>
+                            
                             <?php } else { ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?= ROOT; ?>users/">Login</a>
