@@ -1,21 +1,21 @@
 <?php
 mustlogin();
 $data = DB('menu')->all();
-if(isset($_POST['del'])){
-    $delid=implode(",",$_POST['del']);
+if (isset($_POST['del'])) {
+    $delid = implode(",", $_POST['del']);
     DB('menu')->delete($delid);
-    Session::set('gt',"Deleted Successfully!");
+    Session::set('gt', "Deleted Successfully!");
     redirect('menu');
     exit;
 }
 ?>
 <div class="mt-4">
-    <a href="<?=ROOT;?>menu/form" class="btn btn-primary">Add Items</a>
+    <a href="<?= ROOT; ?>menu/form" class="btn btn-primary">Add Items</a>
 </div>
-<?php if($msg=Session::get('gt')){
-    ?>
-    <div class="alert alert-success text-center h3"><?=$msg;?></div>
-    <?php
+<?php if ($msg = Session::get('gt')) {
+?>
+    <div class="alert alert-success text-center h3"><?= $msg; ?></div>
+<?php
     Session::delete('gt');
 }
 ?>
@@ -26,6 +26,7 @@ if(isset($_POST['del'])){
                 <th>S.No</th>
                 <th> <input type="checkbox" id="all" onclick="checkdel(this)"> <label for="all">All</label> </th>
                 <th>Item Name</th>
+                <th>Picture</th>
                 <th>Categories</th>
                 <th>Status</th>
                 <th>Item Inserted </th>
@@ -40,9 +41,17 @@ if(isset($_POST['del'])){
                     <td><?= ++$index; ?></td>
                     <td><input type="checkbox" onclick="displaybtn()" name="del[]" class="delc" value="<?= $info['id']; ?>"> </td>
                     <td>
-                        <a href="<?=ROOT;?>menu/form/<?=$info['id'];?>" title="Click for edit">
-                        <?= $info['item']; ?>
+                        <a href="<?= ROOT; ?>menu/form/<?= $info['id']; ?>" title="Click for edit">
+                            <?= $info['item']; ?>
                         </a>
+                    </td>
+                    <td>
+                        <?php if ($info['picture']) { ?>
+                            <img class="rounded-circle" src="<?= ROOT . 'public/images/' . $info['picture']; ?>" height="150px">
+                        <?php } else {
+                            echo "<span class='text-muted'>N/a</span>";
+                        }
+                        ?>
                     </td>
                     <td><?= $info['category']; ?></td>
                     <td><?= $info['status']; ?></td>

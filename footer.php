@@ -13,7 +13,7 @@
         var oTable = $('#list').dataTable({
             "aoColumnDefs": [{
                     "bSortable": false,
-                    "aTargets": [0, 1]
+                    "aTargets": [0, 1,3]
                 },
 
             ]
