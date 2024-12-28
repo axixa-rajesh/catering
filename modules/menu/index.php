@@ -1,9 +1,14 @@
 <?php
 mustlogin();
-$data = DB('menu')->all();
+$dbobj= DB('menu');
+$data = $dbobj->all();
 if (isset($_POST['del'])) {
     $delid = implode(",", $_POST['del']);
-    DB('menu')->delete($delid);
+    foreach($_POST['del'] as $did){
+        if ($pn= ($dbobj->find($did,'picture')['picture']))
+            unlink("public/images/$pn");
+    }
+    $dbobj->delete($delid);
     Session::set('gt', "Deleted Successfully!");
     redirect('menu');
     exit;

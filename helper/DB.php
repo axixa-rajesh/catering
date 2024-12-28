@@ -31,6 +31,21 @@ function DB($table,$pk='id'){
              $sql="select $cols from $this->table order by $order";
             return $this->query($sql)?->fetch_all(MYSQLI_ASSOC);
          }
+        public function filter($filter="",$cols = "*",$order="")
+        {
+            $wh=" where 1 ";
+            if (!$order) {
+                $order = "$this->pk desc";
+            }
+            if(is_array($filter) && count($filter)>0){
+               
+                foreach($filter as $c=>$v){
+                    $wh.=" and ($c='$v') ";
+                }
+            }
+            $sql = "select $cols from $this->table $wh order by $order";
+            return $this->query($sql)?->fetch_all(MYSQLI_ASSOC);
+        }
         public function custom($sql,$fetch=1)
         {
             if($fetch)

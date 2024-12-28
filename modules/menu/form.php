@@ -24,7 +24,10 @@ if (isset($_POST['item'])) {
             'description' => $_POST['description'],
             'category' => ($_POST['category']) ? implode(',', $_POST['category']) : "",
             'status' => $_POST['status'],
-            'picture' => $picture
+            'picture' => $picture,
+            'price' => $_POST['price'],
+            'unit'=>$_POST['unit'],
+
         ];
 
         if ($obj->save($info, $uid)) {
@@ -50,8 +53,20 @@ if (isset($err)) {
         <label for="item">Item Name</label>
         <input type="text" class="form-control" placeholder="Enter Item Name" required name="item" id="item" value="<?= $info['item'] ?? '' ?>">
     </div>
-
-
+    <div class="mb-3">
+        <label for="price">Item Price</label>
+        <input type="number" class="form-control" placeholder="Enter Item Price" required name="price" id="price" value="<?= $info['price'] ?? '' ?>">
+    </div>
+    <div class="mb-3">
+        <label for="unit">Unit</label>
+        
+        <input type="text" class="form-select" placeholder="Enter Item Name" required name="unit" id="unit" list="un" value="<?= $info['unit'] ?? '' ?>">
+        <datalist id="un">
+            <option value="KG">
+            <option value="Plate">
+            <option value="Piece">
+        </datalist>
+    </div>
     <div class="mb-3">
         <label>Select Category <small>(Hold ctrl button for multiple selection)</small></label>
         <?php $cats = explode(',', $info['category'] ?? ''); ?>
@@ -78,7 +93,7 @@ if (isset($err)) {
             <label for="pic">Uploaded Picture</label>
             <div class="form-control">
 
-                <img src="<?=ROOT.'public/images/'.$picture;?>" height="150px">
+                <img src="<?= ROOT . 'public/images/' . $picture; ?>" height="150px">
             </div>
         </div>
     <?php
